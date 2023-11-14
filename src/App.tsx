@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
+import getPlanetsWithoutResidents from './services/getPlanetsWithoutResidents';
 
 function App() {
+  useEffect(() => {
+    getPlanetsWithoutResidents();
+  }, []);
+
   return (
-    <span>Hello, App!</span>
+    <div>Hello, App!</div>
   );
 }
 
