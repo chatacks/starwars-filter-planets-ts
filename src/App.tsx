@@ -3,6 +3,7 @@ import './App.css';
 import getPlanetsWithoutResidents from './services/getPlanetsWithoutResidents';
 import PlanetsContext from './context/PlanetsContext';
 import Table from './components/Table';
+import FilterInput from './components/FilterInput';
 
 function App() {
   const { recoveryPlanets } = useContext(PlanetsContext);
@@ -17,6 +18,7 @@ function App() {
 
   return (
     <div>
+      <FilterInput />
       <Table />
     </div>
   );
