@@ -1,3 +1,5 @@
+import React from 'react';
+
 export type PlanetsAPI = {
   climate: string,
   created: string,
@@ -13,4 +15,13 @@ export type PlanetsAPI = {
   terrain: string,
   url: string,
   residents?: any
+};
+
+export type PlanetsContextType = {
+  recoveryPlanets: (recoveryPlanets: PlanetsAPI[]) => void,
+  planets: PlanetsAPI[],
+};
+
+export type PlanetsProviderProps = {
+  children: React.ReactNode
 };

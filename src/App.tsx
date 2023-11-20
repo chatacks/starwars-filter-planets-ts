@@ -1,14 +1,24 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import './App.css';
 import getPlanetsWithoutResidents from './services/getPlanetsWithoutResidents';
+import PlanetsContext from './context/PlanetsContext';
+import Table from './components/Table';
 
 function App() {
+  const { recoveryPlanets } = useContext(PlanetsContext);
+
   useEffect(() => {
-    getPlanetsWithoutResidents();
+    const getResultPlanets = async () => {
+      const planetsData = await getPlanetsWithoutResidents();
+      recoveryPlanets(planetsData);
+    };
+    getResultPlanets();
   }, []);
 
   return (
-    <div>Hello, App!</div>
+    <div>
+      <Table />
+    </div>
   );
 }
 
