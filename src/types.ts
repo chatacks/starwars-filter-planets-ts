@@ -18,17 +18,30 @@ export type PlanetsAPI = {
 };
 
 export type PlanetsContextType = {
-  recoveryPlanets: (recoveryPlanets: PlanetsAPI[]) => void;
-  planets: PlanetsAPI[];
-  handleFormChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  // recoveryPlanets: (recoveryPlanets: PlanetsAPI[]) => void;
+  handleFormChange: (event:
+  React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+  filteredColumns: () => void;
   formData: FormDataType;
-  filteredPlanetsName: PlanetsAPI[];
+  planetsFiltred: PlanetsAPI[];
+  filteredPlanetsName: () => PlanetsAPI[];
 };
 
 export type PlanetsProviderProps = {
   children: React.ReactNode
 };
 
+export type InitialFormValueType = {
+  planetName: string;
+  columns: string;
+  operator: string;
+  valueInput: string;
+};
+
 export type FormDataType = {
   planetName: string;
+  columns: string;
+  operator: string;
+  valueInput: string;
 };
