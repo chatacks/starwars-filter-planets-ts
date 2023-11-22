@@ -1,12 +1,15 @@
 import './App.css';
 import Table from './components/Table';
 import FiltersInputs from './components/FiltersInputs';
+import PlanetsProvider from './context/PlanetsProvider';
 
 function App() {
   return (
     <div>
-      <FiltersInputs />
-      <Table />
+      <PlanetsProvider>
+        <FiltersInputs />
+        <Table />
+      </PlanetsProvider>
     </div>
   );
 }

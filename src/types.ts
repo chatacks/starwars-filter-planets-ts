@@ -22,26 +22,31 @@ export type PlanetsContextType = {
   handleFormChange: (event:
   React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   handleFormSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  filteredColumns: () => void;
+  // filteredColumns: () => void;
   formData: FormDataType;
   planetsFiltred: PlanetsAPI[];
   filteredPlanetsName: () => PlanetsAPI[];
+  removeAllFilters: () => void;
+  columns: string[];
 };
 
 export type PlanetsProviderProps = {
   children: React.ReactNode
 };
 
+export type ColumnsType =
+'population' | 'orbital_period' | 'diameter' | 'rotation_period' | 'surface_water';
+
 export type InitialFormValueType = {
   planetName: string;
-  columns: string;
+  columnsPlanet: ColumnsType;
   operator: string;
   valueInput: string;
 };
 
 export type FormDataType = {
   planetName: string;
-  columns: string;
+  columnsPlanet: ColumnsType;
   operator: string;
   valueInput: string;
 };

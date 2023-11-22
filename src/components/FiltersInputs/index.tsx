@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import PlanetsContext from '../../context/PlanetsContext';
-import { columns, operators } from '../../utils/formCharacteristcs';
+import { operators } from '../../utils/formCharacteristcs';
 
 function FilterInputs() {
   const {
     formData,
     handleFormChange,
     handleFormSubmit,
+    columns,
   } = useContext(PlanetsContext);
 
   return (
@@ -29,8 +30,8 @@ function FilterInputs() {
         <select
           data-testid="column-filter"
           onChange={ handleFormChange }
-          value={ formData.columns }
-          name="columns"
+          value={ formData.columnsPlanet }
+          name="columnsPlanet"
           id="columns"
         >
           {columns.map((column) => (

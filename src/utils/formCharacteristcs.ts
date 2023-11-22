@@ -1,4 +1,4 @@
-export const columns: string[] = [
+export const columnsData: string[] = [
   'population',
   'orbital_period',
   'diameter',
