@@ -28,6 +28,8 @@ export type PlanetsContextType = {
   filteredPlanetsName: () => PlanetsAPI[];
   removeAllFilters: () => void;
   columns: string[];
+  filterList: FormDataType[],
+  removeFilters: (filterToRemove: string) => void;
 };
 
 export type PlanetsProviderProps = {

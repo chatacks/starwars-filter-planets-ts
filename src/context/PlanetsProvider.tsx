@@ -103,7 +103,20 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     setColumns(columnsRemoved);
   };
 
-  const removeAllFilters = () => setFilterList([]);
+  const removeFilters = (filterToRemove: string) => {
+    const filtersRemoved = filterList
+      .filter((filter) => filter.columnsPlanet !== filterToRemove);
+
+    setFilterList(filtersRemoved);
+    setColumns([...columns, filterToRemove]);
+    applyFilters(filtersRemoved);
+  };
+
+  const removeAllFilters = () => {
+    setFilterList([]);
+    setColumns(columnsData);
+    setPlanetsFiltred(planets);
+  };
 
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -123,6 +136,8 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     filteredPlanetsName,
     removeAllFilters,
     columns,
+    filterList,
+    removeFilters,
   };
 
   return (

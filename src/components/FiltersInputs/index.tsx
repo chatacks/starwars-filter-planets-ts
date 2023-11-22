@@ -8,6 +8,7 @@ function FilterInputs() {
     handleFormChange,
     handleFormSubmit,
     columns,
+    removeAllFilters,
   } = useContext(PlanetsContext);
 
   return (
@@ -62,10 +63,21 @@ function FilterInputs() {
           id="valueInput"
         />
 
-        <button data-testid="button-filter">
+        <button
+          data-testid="button-filter"
+          type="submit"
+        >
           Filtrar
-
         </button>
+
+        <button
+          data-testid="button-remove-filters"
+          onClick={ removeAllFilters }
+          type="button"
+        >
+          Remover Filtros
+        </button>
+
       </form>
     </div>
   );
