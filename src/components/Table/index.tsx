@@ -27,7 +27,7 @@ function Table() {
         <tbody>
           {formData.planetName.length > 0 ? (filteredPlanetsName().map((planet) => (
             <tr key={ planet.name }>
-              <td>{planet.name}</td>
+              <td data-testid="planet-name">{planet.name}</td>
               <td>{planet.rotation_period}</td>
               <td>{planet.orbital_period}</td>
               <td>{planet.diameter}</td>
@@ -48,7 +48,7 @@ function Table() {
           )))
             : (planetsFiltred.map((planet) => (
               <tr key={ planet.name }>
-                <td>{planet.name}</td>
+                <td data-testid="planet-name">{planet.name}</td>
                 <td>{planet.rotation_period}</td>
                 <td>{planet.orbital_period}</td>
                 <td>{planet.diameter}</td>

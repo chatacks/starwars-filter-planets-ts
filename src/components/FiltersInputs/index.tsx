@@ -9,8 +9,10 @@ function FilterInputs() {
     handleFormSubmit,
     columns,
     removeAllFilters,
+    applyOrder,
   } = useContext(PlanetsContext);
 
+  const { sort, columnsSort } = formData;
   return (
     <div>
       <form onSubmit={ handleFormSubmit }>
@@ -76,6 +78,49 @@ function FilterInputs() {
           type="button"
         >
           Remover Filtros
+        </button>
+
+        <div>
+          <input
+            data-testid="column-sort-input-asc"
+            onChange={ handleFormChange }
+            type="radio"
+            name="sort"
+            id="ascedent"
+            value="ascendent"
+          />
+          <label htmlFor="ascedent">Ascendente</label>
+
+          <input
+            data-testid="column-sort-input-desc"
+            onChange={ handleFormChange }
+            type="radio"
+            name="sort"
+            id="descendent"
+            value="descendent"
+          />
+          <label htmlFor="descendent">Descendente</label>
+        </div>
+
+        <label htmlFor="columnOrder">Ordernar: </label>
+        <select
+          data-testid="column-sort"
+          onChange={ handleFormChange }
+          value={ formData.columnsSort }
+          name="columnsSort"
+          id="columnsSort"
+        >
+          {columns.map((column) => (
+            <option key={ column } value={ column }>{column}</option>
+          ))}
+        </select>
+
+        <button
+          data-testid="column-sort-button"
+          type="button"
+          onClick={ () => applyOrder({ sort, columnsSort }) }
+        >
+          Ordenar
         </button>
 
       </form>

@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import PlanetsContext from './PlanetsContext';
-import { ColumnsType, FormDataType, PlanetsAPI, PlanetsProviderProps } from '../types';
+import {
+  ColumnsType,
+  FormDataType,
+  PlanetsAPI,
+  PlanetsProviderProps,
+  SortedColumns } from '../types';
 import { initialFormValue } from '../utils/formDataValue';
 import getPlanetsWithoutResidents from '../services/getPlanetsWithoutResidents';
 import { columnsData } from '../utils/formCharacteristcs';
@@ -15,6 +20,8 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     columnsPlanet: columns[0] as ColumnsType,
     operator: 'maior que',
     valueInput: '0',
+    sort: '',
+    columnsSort: 'population',
   });
 
   const { planetName } = formData;
@@ -34,6 +41,8 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
       columnsPlanet: columns[0] as ColumnsType,
       operator: 'maior que',
       valueInput: '0',
+      sort: '',
+      columnsSort: 'population',
     });
   }, [columns]);
 
@@ -118,6 +127,28 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     setPlanetsFiltred(planets);
   };
 
+  const applyOrder = (columnsSort: SortedColumns) => {
+    const result = planets.sort((a, b) => {
+      const columnsA = a[columnsSort.columnsSort as keyof PlanetsAPI];
+      const columnsB = b[columnsSort.columnsSort as keyof PlanetsAPI];
+
+      if (columnsA === 'unknown') {
+        return 1;
+      }
+
+      if (columnsB === 'unknown') {
+        return -1;
+      }
+
+      if (columnsSort.sort === 'descendent') {
+        return Number(columnsB) - Number(columnsA);
+      }
+
+      return Number(columnsA) - Number(columnsB);
+    });
+    setPlanetsFiltred([...result]);
+  };
+
   const handleFormSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setFilterList([...filterList, formData]);
@@ -138,6 +169,7 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     columns,
     filterList,
     removeFilters,
+    applyOrder,
   };
 
   return (

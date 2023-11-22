@@ -30,6 +30,7 @@ export type PlanetsContextType = {
   columns: string[];
   filterList: FormDataType[],
   removeFilters: (filterToRemove: string) => void;
+  applyOrder: (columnsSort: SortedColumns) => void;
 };
 
 export type PlanetsProviderProps = {
@@ -44,6 +45,8 @@ export type InitialFormValueType = {
   columnsPlanet: ColumnsType;
   operator: string;
   valueInput: string;
+  sort: string;
+  columnsSort: string;
 };
 
 export type FormDataType = {
@@ -51,4 +54,11 @@ export type FormDataType = {
   columnsPlanet: ColumnsType;
   operator: string;
   valueInput: string;
+  sort: string;
+  columnsSort: string;
+};
+
+export type SortedColumns = {
+  sort: string;
+  columnsSort: string;
 };

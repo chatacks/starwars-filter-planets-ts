@@ -5,4 +5,6 @@ export const initialFormValue: InitialFormValueType = {
   columnsPlanet: 'population',
   operator: 'maior que',
   valueInput: '0',
+  sort: '',
+  columnsSort: 'population',
 };
