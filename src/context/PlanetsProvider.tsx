@@ -96,11 +96,8 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
           case 'menor que':
             return Number(columnsPlanets) < Number(value);
 
-          case 'igual a':
-            return Number(columnsPlanets) === Number(value);
-
           default:
-            return [];
+            return Number(columnsPlanets) === Number(value);
         }
       })
     ));

@@ -68,6 +68,10 @@ describe('Verifica funcionalidades do App', () => {
 
     const planetsRenderized = await screen.findAllByRole('cell');
     planetsRenderized.forEach((planet) => expect(planet).toBeInTheDocument());
+  
+    const teste = await screen.findAllByRole('row');
+    expect(teste).toHaveLength(11)
+    
       
   });
 
@@ -147,7 +151,17 @@ describe('Verifica funcionalidades do App', () => {
 
     await user.click(buttonRemoveFilter);
 
-    screen.debug();
+    const radioAscendent = screen.getByRole('radio', {name: /ascendente/i});
+    expect(radioAscendent).toBeInTheDocument();
+    await user.click(radioAscendent);
+    await user.click(screen.getByRole('button', {  name: /ordenar/i}))
+
+    await user.click(buttonRemove);
+    
+    const radioDescendent = screen.getByRole('radio', {name: /descendente/i})
+    expect(radioDescendent).toBeInTheDocument();
+    await user.click(radioDescendent);
+    await user.click(screen.getByRole('button', {  name: /ordenar/i}))
     
   });
 
