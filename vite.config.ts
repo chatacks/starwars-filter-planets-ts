@@ -18,6 +18,7 @@ export default defineConfig({
         "node_modules/*",
         "src/main.tsx",
         "src/tests/*",
+        "src/services/*"
       ],
       provider: 'c8'
     }

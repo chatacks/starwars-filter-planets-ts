@@ -59,8 +59,9 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
 
   const filteredPlanetsName = () => {
     const result = planetName.length > 0
-      ? planets.filter((planet) => (planet.name.toLowerCase().includes(planetName)))
-      : planets;
+      ? planets.filter((planet) => (planet
+        .name.toLowerCase().includes(planetName.toLowerCase())))
+      : [];
     return result;
   };
 
