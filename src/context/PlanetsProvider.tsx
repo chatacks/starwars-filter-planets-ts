@@ -46,6 +46,8 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     });
   }, [columns]);
 
+  // console.log(planetsFiltred);
+
   const handleFormChange = (event:
   React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = event.target;
