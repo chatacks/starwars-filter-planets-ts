@@ -57,6 +57,8 @@ function PlanetsProvider({ children }: PlanetsProviderProps) {
     }));
   };
 
+  console.log('renderizou');
+
   const filteredPlanetsName = () => {
     const result = planetName.length > 0
       ? planets.filter((planet) => (planet
